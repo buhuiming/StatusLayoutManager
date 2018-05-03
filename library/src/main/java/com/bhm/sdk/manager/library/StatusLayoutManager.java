@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 
 /**
- * 多布局切换
  * Created by bhm on 2018/5/2.
  */
 public class StatusLayoutManager {
@@ -46,12 +45,15 @@ public class StatusLayoutManager {
 		}
 	}
 
+	public static Builder newBuilder(Activity activity) {
+		return new Builder(activity);
+	}
+
 	private void getAllChildViews(View itemView){
 		if (itemView instanceof ViewGroup) {
 			ViewGroup vp = (ViewGroup) itemView;
 			for (int i = 0; i < vp.getChildCount(); i++) {
 				View viewChild = vp.getChildAt(i);
-				//再次 调用本身（递归）
 				getAllChildViews(viewChild);
 			}
 			vp.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +73,7 @@ public class StatusLayoutManager {
 	}
 
 	/**
-	 *  显示内容
+	 *  show content
 	 */
 	public void showContent() {
 		if(contentView.getVisibility() == View.GONE){
@@ -90,7 +92,7 @@ public class StatusLayoutManager {
 	}
 
 	/**
-	 *  显示指定布局
+	 *  show position view
 	 */
 	public void showViewByPosition(int position) {
 		contentView.setVisibility(View.GONE);
@@ -145,9 +147,5 @@ public class StatusLayoutManager {
 		public StatusLayoutManager build() {
 			return new StatusLayoutManager(this);
 		}
-	}
-
-	public static Builder newBuilder(Activity activity) {
-		return new Builder(activity);
 	}
 }
