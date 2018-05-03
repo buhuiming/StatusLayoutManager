@@ -66,9 +66,9 @@ This is StatusLayoutManager Project!
        
 5.在需要的场景切换布局：
 
-        
         private final static int no_data = 0;
         private final static int no_net = 1;
+        
         ayoutManager.hideAllLayout();
         layoutManager.showViewByPosition(no_data);
         layoutManager.showViewByPosition(no_net);
