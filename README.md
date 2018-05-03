@@ -42,9 +42,10 @@ This is StatusLayoutManager Project!
         
         
          private ArrayList<Integer>  getItemViewsId(){
+         
             ArrayList<Integer> res = new ArrayList<>();
-            res.add(R.layout.layout_no_data);
-            res.add(R.layout.layout_no_net);
+            res.add(R.layout.layout_no_data);
+            res.add(R.layout.layout_no_net);
             return res;
          }
 
@@ -67,7 +68,8 @@ This is StatusLayoutManager Project!
 
         
         private final static int no_data = 0;
-        private final static int no_net = 1;
+        private final static int no_net = 1;
+        
         ayoutManager.hideAllLayout();
         layoutManager.showViewByPosition(no_data);
         layoutManager.showViewByPosition(no_net);
