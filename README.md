@@ -9,12 +9,12 @@ This is StatusLayoutManager Project!
 
 1.引用
 
-<dependency>
-  <groupId>com.bhm.sdk.manager.library</groupId>
-  <artifactId>StatusLayoutManager</artifactId>
-  <version>1.0.0</version>
-  <type>pom</type>
-</dependency>
+    <dependency>
+      <groupId>com.bhm.sdk.manager.library</groupId>
+      <artifactId>StatusLayoutManager</artifactId>
+      <version>1.0.0</version>
+      <type>pom</type>
+    </dependency>
 
 或者
 
@@ -43,10 +43,8 @@ This is StatusLayoutManager Project!
         
         private ArrayList<Integer>  getItemViewsId(){
         ArrayList<Integer> res = new ArrayList<>();
-        //无数据页面
-        res.add(R.layout.layout_no_data);
-        //无网络页面
-        res.add(R.layout.layout_no_net);
+        res.add(R.layout.layout_no_data); //无数据页面
+        res.add(R.layout.layout_no_net);//无网络页面
         return res;
         }
 
@@ -59,14 +57,15 @@ This is StatusLayoutManager Project!
    其中getItemViewsId()方法，添加所需要用到的布局。
   
 4.BaseActivity或者BaseFragment 实现接口OnViewClickListener，重写方法
+      
        @Override
        public void onClick(View view) {
         
        }
        
 5.在需要的场景切换布局：
-        //添加到集合中的布局的index
-         private final static int no_data = 0;
+        
+         private final static int no_data = 0;//添加到集合中的布局的index
          private final static int no_net = 1;
          ayoutManager.hideAllLayout();
          layoutManager.showViewByPosition(no_data);
