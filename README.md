@@ -69,7 +69,6 @@ This is StatusLayoutManager Project!
         
         private final static int no_data = 0;
         private final static int no_net = 1;
-        
         ayoutManager.hideAllLayout();
         layoutManager.showViewByPosition(no_data);
         layoutManager.showViewByPosition(no_net);
