@@ -41,12 +41,12 @@ This is StatusLayoutManager Project!
         }
         
         
-        private ArrayList<Integer>  getItemViewsId(){
-        ArrayList<Integer> res = new ArrayList<>();
-        res.add(R.layout.layout_no_data); //无数据页面
-        res.add(R.layout.layout_no_net);//无网络页面
-        return res;
-        }
+         private ArrayList<Integer>  getItemViewsId(){
+            ArrayList<Integer> res = new ArrayList<>();
+            res.add(R.layout.layout_no_data); //无数据页面
+            res.add(R.layout.layout_no_net);//无网络页面
+            return res;
+         }
 
         protected abstract int setRootViewId();
 
@@ -64,12 +64,14 @@ This is StatusLayoutManager Project!
        }
        
 5.在需要的场景切换布局：
+
         
-         private final static int no_data = 0;//添加到集合中的布局的index
-         private final static int no_net = 1;
-         ayoutManager.hideAllLayout();
-         layoutManager.showViewByPosition(no_data);
-         layoutManager.showViewByPosition(no_net);
+        private final static int no_data = 0;//添加到集合中的布局的index
+        private final static int no_net = 1;
+        ayoutManager.hideAllLayout();
+        layoutManager.showViewByPosition(no_data);
+        layoutManager.showViewByPosition(no_net);
+        
         
  6.布局中控件的点击事件：
  
