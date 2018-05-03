@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_no_data_tips_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无数据"
+        android:textColor="@color/color_9"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp" />
+
+
+    <Button
+        android:id="@+id/btn_no_data"
+        android:layout_width="160dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:text="点击刷新"/>
+
+</LinearLayout>
