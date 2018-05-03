@@ -93,6 +93,13 @@ This is StatusLayoutManager Project!
     }
     
     
+  注意：
+  
+    setRootViewId是根布局；
+    containerViewId是父布局，比较关键的是此父布局最好使用LinearLayout；
+    setContentViewId是内容布局，比如recycleView。
+    
   至此，布局管理类的使用到此，是不是觉得简单多了！若不明白，请参考demo代码。
   
+  如果出现布局空白，不显示指定的布局，可以修改或添加containerViewId对应的布局为LinearLayout。
   有问题，请发email给我873247376@qq.com。
