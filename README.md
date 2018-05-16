@@ -12,13 +12,13 @@ This is StatusLayoutManager Project!
     <dependency>
       <groupId>com.bhm.sdk.manager.library</groupId>
       <artifactId>StatusLayoutManager</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <type>pom</type>
     </dependency>
 
 或者
 
-  compile 'com.bhm.sdk.manager.library:StatusLayoutManager:1.0.0'
+  compile 'com.bhm.sdk.manager.library:StatusLayoutManager:1.0.1'
   
 2.在BaseActivity或者BaseFragment中声名对象
 
