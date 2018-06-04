@@ -1,6 +1,9 @@
 # StatusLayoutManager
 This is StatusLayoutManager Project!
 
+[![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg)](https://android-arsenal.com/api?level=15) [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)[ ![Download](https://api.bintray.com/packages/bikie/bhm-sdk/StatusLayoutManager/images/download.svg) ](https://bintray.com/bikie/bhm-sdk/StatusLayoutManager/_latestVersion)
+-----
+
   以前的项目在常常遇见这样的场景，未登录显示<未登录页面>，无网络显示<网络异常页面>，
 没有数据显示<无数据页面>等等，当场景多了，页面自然也多了，但是在每个layout文件中都
 添加这些布局，或者通过include方式，始终都觉得太麻烦。
