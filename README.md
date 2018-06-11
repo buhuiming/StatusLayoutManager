@@ -68,13 +68,13 @@ This is StatusLayoutManager Project!
        }
        
 ## 5.在需要的场景切换布局：
+    //添加到集合(getItemViewsId)的下标
+    private final static int no_data = 0;
+    private final static int no_net = 1;
 
-        private final static int no_data = 0;
-        private final static int no_net = 1;
-        
-        ayoutManager.hideAllLayout();
-        layoutManager.showViewByPosition(no_data);
-        layoutManager.showViewByPosition(no_net);
+    layoutManager.hideAllLayout();
+    layoutManager.showViewByPosition(no_data);
+    layoutManager.showViewByPosition(no_net);
         
         
 ## 6.布局中控件的点击事件：
