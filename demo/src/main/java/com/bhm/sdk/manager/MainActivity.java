@@ -37,6 +37,7 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()){
             case R.id.layout_no_net :
                 Toast.makeText(this, "点击了屏幕", Toast.LENGTH_SHORT).show();
+                layoutManager.showContent();
                 break;
             case R.id.tv_no_data :
                 Toast.makeText(this, "点击屏幕重试", Toast.LENGTH_SHORT).show();

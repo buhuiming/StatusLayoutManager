@@ -13,31 +13,19 @@ import java.util.ArrayList;
  */
 public class StatusLayoutManager {
 
-	private final Activity activity;
-	private final int contentViewId;
-	private final int containerViewId;
-	private final View rootView;
 	private final OnViewClickListener listener;
-	private final ArrayList<Integer> viewsId;
-
-	private final View containerView;
 	private final View contentView;
 	private final ArrayList<View> views = new ArrayList<>();
 
-	public StatusLayoutManager(Builder builder) {
-		this.activity = builder.activity;
-		this.rootView = builder.rootView;
-		this.containerViewId = builder.containerViewId;
-		this.contentViewId = builder.contentViewId;
-		this.viewsId = builder.viewsId;
+	private StatusLayoutManager(Builder builder) {
 		this.listener = builder.listener;
-		containerView = rootView.findViewById(containerViewId);
+		View containerView = builder.rootView.findViewById(builder.containerViewId);
 		ViewGroup viewGroup = (ViewGroup) containerView;
-		contentView = viewGroup.findViewById(contentViewId);
+		contentView = viewGroup.findViewById(builder.contentViewId);
 		ViewGroup.LayoutParams params = contentView.getLayoutParams();
 
-		for (int layoutId : viewsId){
-			View itemView = LayoutInflater.from(activity).inflate(layoutId, null);
+		for (int layoutId : builder.viewsId){
+			View itemView = LayoutInflater.from(builder.activity).inflate(layoutId, null);
 			getAllChildViews(itemView);
 			viewGroup.addView(itemView, params);
 			itemView.setVisibility(View.GONE);
@@ -114,7 +102,7 @@ public class StatusLayoutManager {
 		private ArrayList<Integer> viewsId;
 		private OnViewClickListener listener;
 
-		public Builder(Activity activity) {
+		Builder(Activity activity) {
 			this.activity = activity;
 		}
 
