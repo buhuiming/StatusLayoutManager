@@ -8,7 +8,7 @@ import android.view.View;
 import com.bhm.sdk.manager.library.OnViewClickListener;
 import com.bhm.sdk.manager.library.StatusLayoutManager;
 
-import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 /**
  * Created by bhm on 2018/5/2.
@@ -41,10 +41,10 @@ public abstract class BaseActivity extends AppCompatActivity implements OnViewCl
         }
     }
 
-    private ArrayList<Integer>  getItemViewsId(){
-        ArrayList<Integer> res = new ArrayList<>();
-        res.add(R.layout.layout_no_data);
-        res.add(R.layout.layout_no_net);
+    private LinkedHashMap<Integer, Object> getItemViewsId(){
+        LinkedHashMap<Integer, Object> res = new LinkedHashMap<>();
+        res.put(R.layout.layout_no_data, "no_data");//参数1：layout的id；参数2：Tag，标识
+        res.put(R.layout.layout_no_net, "no_net");
         return res;
     }
 

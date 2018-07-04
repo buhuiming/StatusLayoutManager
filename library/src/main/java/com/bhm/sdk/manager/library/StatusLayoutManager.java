@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 /**
@@ -15,7 +17,7 @@ public class StatusLayoutManager {
 
 	private final OnViewClickListener listener;
 	private final View contentView;
-	private final ArrayList<View> views = new ArrayList<>();
+	private final LinkedHashMap<View, Object> views = new LinkedHashMap<>();
 
 	private StatusLayoutManager(Builder builder) {
 		this.listener = builder.listener;
@@ -24,12 +26,15 @@ public class StatusLayoutManager {
 		contentView = viewGroup.findViewById(builder.contentViewId);
 		ViewGroup.LayoutParams params = contentView.getLayoutParams();
 
-		for (int layoutId : builder.viewsId){
-			View itemView = LayoutInflater.from(builder.activity).inflate(layoutId, null);
+		for (Object o : builder.viewsId.entrySet()) {
+			Map.Entry entry = (Map.Entry) o;
+			int key = (int) entry.getKey();
+			Object val = entry.getValue();
+			View itemView = LayoutInflater.from(builder.activity).inflate(key, null);
 			getAllChildViews(itemView);
 			viewGroup.addView(itemView, params);
 			itemView.setVisibility(View.GONE);
-			views.add(itemView);
+			views.put(itemView, val);
 		}
 	}
 
@@ -66,7 +71,9 @@ public class StatusLayoutManager {
 	public void showContent() {
 		if(contentView.getVisibility() == View.GONE){
 			contentView.setVisibility(View.VISIBLE);
-			for (View view : views){
+			for (Object o : views.entrySet()) {
+				Map.Entry entry = (Map.Entry) o;
+				View view = (View) entry.getKey();
 				view.setVisibility(View.GONE);
 			}
 		}
@@ -74,21 +81,43 @@ public class StatusLayoutManager {
 
 	public void hideAllLayout(){
 		contentView.setVisibility(View.GONE);
-		for (View view : views){
+		for (Object o : views.entrySet()) {
+			Map.Entry entry = (Map.Entry) o;
+			View view = (View) entry.getKey();
 			view.setVisibility(View.GONE);
 		}
 	}
 
 	/**
 	 *  show position view
+	 *  @deprecated Use {@link #showViewByTag(Object)} instead.
 	 */
+	@Deprecated
 	public void showViewByPosition(int position) {
 		contentView.setVisibility(View.GONE);
-		for (int i = 0; i < views.size(); i++){
+		ArrayList<View> arr = new ArrayList<>();
+		for (Object o : views.entrySet()) {
+			Map.Entry entry = (Map.Entry) o;
+			View view = (View) entry.getKey();
+			arr.add(view);
+		}
+		for (int i = 0; i < arr.size(); i++){
 			if(position == i){
-				views.get(i).setVisibility(View.VISIBLE);
+				arr.get(i).setVisibility(View.VISIBLE);
 			}else {
-				views.get(i).setVisibility(View.GONE);
+				arr.get(i).setVisibility(View.GONE);
+			}
+		}
+	}
+
+	public void showViewByTag(Object tag){
+		for (Object o : views.entrySet()) {
+			Map.Entry entry = (Map.Entry) o;
+			View view = (View) entry.getKey();
+			Object o1 = entry.getValue();
+			if(o1 == tag || tag.equals(o1)) {
+				view.setVisibility(View.VISIBLE);
+				contentView.setVisibility(View.GONE);
 			}
 		}
 	}
@@ -99,7 +128,7 @@ public class StatusLayoutManager {
 		private int contentViewId;
 		private int containerViewId;
 		private View rootView;
-		private ArrayList<Integer> viewsId;
+		private LinkedHashMap<Integer, Object> viewsId;
 		private OnViewClickListener listener;
 
 		Builder(Activity activity) {
@@ -122,7 +151,7 @@ public class StatusLayoutManager {
 			return this;
 		}
 
-		public Builder itemViewsId(ArrayList<Integer> viewsId) {
+		public Builder itemViewsId(LinkedHashMap<Integer, Object> viewsId) {
 			this.viewsId = viewsId;
 			return this;
 		}

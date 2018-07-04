@@ -27,8 +27,9 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         super.initView();
 //        layoutManager.hideAllLayout();
-//        layoutManager.showViewByPosition(no_data);
-        layoutManager.showViewByPosition(no_net);
+//        layoutManager.showViewByPosition(no_data);deprecated
+//        layoutManager.showViewByPosition(no_net);deprecated
+        layoutManager.showViewByTag("no_net");
     }
 
     @Override
