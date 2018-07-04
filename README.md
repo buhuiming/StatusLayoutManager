@@ -15,13 +15,13 @@ This is StatusLayoutManager Project!
     <dependency>
       <groupId>com.bhm.sdk.manager.library</groupId>
       <artifactId>StatusLayoutManager</artifactId>
-      <version>1.0.2</version>
+      <version>1.0.3</version>
       <type>pom</type>
     </dependency>
 
 或者
 
-    compile 'com.bhm.sdk.manager.library:StatusLayoutManager:1.0.2'
+    compile 'com.bhm.sdk.manager.library:StatusLayoutManager:1.0.3'
     
 ## 2.在BaseActivity或者BaseFragment中声名对象
 
@@ -44,13 +44,13 @@ This is StatusLayoutManager Project!
         }
         
         
-         private ArrayList<Integer>  getItemViewsId(){
-         
-            ArrayList<Integer> res = new ArrayList<>();
-            res.add(R.layout.layout_no_data);
-            res.add(R.layout.layout_no_net);
+        private LinkedHashMap<Integer, Object> getItemViewsId(){
+            LinkedHashMap<Integer, Object> res = new LinkedHashMap<>();
+            //参数1：layout的id；参数2：Tag，标识
+            res.put(R.layout.layout_no_data, "no_data");
+            res.put(R.layout.layout_no_net, "no_net");
             return res;
-         }
+        }
 
         protected abstract int setRootViewId();
 
@@ -72,9 +72,10 @@ This is StatusLayoutManager Project!
     private final static int no_data = 0;
     private final static int no_net = 1;
 
-    layoutManager.hideAllLayout();
-    layoutManager.showViewByPosition(no_data);
-    layoutManager.showViewByPosition(no_net);
+    //layoutManager.hideAllLayout();
+    //layoutManager.showViewByPosition(no_data);deprecated
+    //layoutManager.showViewByPosition(no_net);deprecated
+    layoutManager.showViewByTag("no_net");
         
         
 ## 6.布局中控件的点击事件：
