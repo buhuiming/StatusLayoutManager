@@ -74,17 +74,23 @@ public class StatusLayoutManager {
 			for (Object o : views.entrySet()) {
 				Map.Entry entry = (Map.Entry) o;
 				View view = (View) entry.getKey();
-				view.setVisibility(View.GONE);
+				if(view.getVisibility() == View.VISIBLE) {
+					view.setVisibility(View.GONE);
+				}
 			}
 		}
 	}
 
 	public void hideAllLayout(){
-		contentView.setVisibility(View.GONE);
+		if(contentView.getVisibility() == View.VISIBLE) {
+			contentView.setVisibility(View.GONE);
+		}
 		for (Object o : views.entrySet()) {
 			Map.Entry entry = (Map.Entry) o;
 			View view = (View) entry.getKey();
-			view.setVisibility(View.GONE);
+			if(view.getVisibility() == View.VISIBLE) {
+				view.setVisibility(View.GONE);
+			}
 		}
 	}
 
@@ -94,7 +100,9 @@ public class StatusLayoutManager {
 	 */
 	@Deprecated
 	public void showViewByPosition(int position) {
-		contentView.setVisibility(View.GONE);
+		if(contentView.getVisibility() == View.VISIBLE) {
+			contentView.setVisibility(View.GONE);
+		}
 		ArrayList<View> arr = new ArrayList<>();
 		for (Object o : views.entrySet()) {
 			Map.Entry entry = (Map.Entry) o;
@@ -103,9 +111,13 @@ public class StatusLayoutManager {
 		}
 		for (int i = 0; i < arr.size(); i++){
 			if(position == i){
-				arr.get(i).setVisibility(View.VISIBLE);
+				if(arr.get(i).getVisibility() == View.GONE) {
+					arr.get(i).setVisibility(View.VISIBLE);
+				}
 			}else {
-				arr.get(i).setVisibility(View.GONE);
+				if(arr.get(i).getVisibility() == View.VISIBLE) {
+					arr.get(i).setVisibility(View.GONE);
+				}
 			}
 		}
 	}
@@ -116,8 +128,12 @@ public class StatusLayoutManager {
 			View view = (View) entry.getKey();
 			Object o1 = entry.getValue();
 			if(o1 == tag || tag.equals(o1)) {
-				view.setVisibility(View.VISIBLE);
-				contentView.setVisibility(View.GONE);
+				if(view.getVisibility() == View.GONE) {
+					view.setVisibility(View.VISIBLE);
+				}
+				if(contentView.getVisibility() == View.VISIBLE) {
+					contentView.setVisibility(View.GONE);
+				}
 			}
 		}
 	}
