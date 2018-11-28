@@ -68,7 +68,7 @@ public class StatusLayoutManager {
 	/**
 	 *  show content
 	 */
-	public void showContent() {
+	public synchronized void showContent() {
 		if(contentView.getVisibility() == View.GONE){
 			contentView.setVisibility(View.VISIBLE);
 			for (Object o : views.entrySet()) {
@@ -81,7 +81,7 @@ public class StatusLayoutManager {
 		}
 	}
 
-	public void hideAllLayout(){
+	public synchronized void hideAllLayout(){
 		if(contentView.getVisibility() == View.VISIBLE) {
 			contentView.setVisibility(View.GONE);
 		}
@@ -99,7 +99,7 @@ public class StatusLayoutManager {
 	 *  @deprecated Use {@link #showViewByTag(Object)} instead.
 	 */
 	@Deprecated
-	public void showViewByPosition(int position) {
+	public synchronized void showViewByPosition(int position) {
 		if(contentView.getVisibility() == View.VISIBLE) {
 			contentView.setVisibility(View.GONE);
 		}
@@ -122,7 +122,7 @@ public class StatusLayoutManager {
 		}
 	}
 
-	public void showViewByTag(Object tag){
+	public synchronized void showViewByTag(Object tag){
 		for (Object o : views.entrySet()) {
 			Map.Entry entry = (Map.Entry) o;
 			View view = (View) entry.getKey();
