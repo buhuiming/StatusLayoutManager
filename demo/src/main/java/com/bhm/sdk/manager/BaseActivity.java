@@ -1,7 +1,6 @@
 package com.bhm.sdk.manager;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -9,6 +8,8 @@ import com.bhm.sdk.manager.library.OnViewClickListener;
 import com.bhm.sdk.manager.library.StatusLayoutManager;
 
 import java.util.LinkedHashMap;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by bhm on 2018/5/2.
