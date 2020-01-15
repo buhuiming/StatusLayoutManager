@@ -10,6 +10,8 @@ This is StatusLayoutManager Project!
 
   所以自然就用了这个管理类，以下介绍下用法。
 
+v1.1.0为androidx版本，如果不用androidx就使用v1.0.5，但是后续有更新将只支持androidx的版本
+
 ## 1.引用
 
     <dependency>
