@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/StatusLayoutManager.iml" filepath="$PROJECT_DIR$/StatusLayoutManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/StatusLayoutManager-demo.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/StatusLayoutManager-demo.iml" group="StatusLayoutManager/demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/library/StatusLayoutManager-library.iml" filepath="$PROJECT_DIR$/.idea/modules/library/StatusLayoutManager-library.iml" group="StatusLayoutManager/library" />
       <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my_sdk-StatusLayoutManager.iml" filepath="$PROJECT_DIR$/.idea/modules/my_sdk-StatusLayoutManager.iml" group="StatusLayoutManager" />
     </modules>
   </component>
 </project>

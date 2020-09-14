@@ -29,7 +29,9 @@ public class MainActivity extends BaseActivity {
 //        layoutManager.hideAllLayout();
 //        layoutManager.showViewByPosition(no_data);deprecated
 //        layoutManager.showViewByPosition(no_net);deprecated
-        layoutManager.showViewByTag("no_net");
+//        layoutManager.showViewByTag("no_net");
+        layoutManager.showViewByTag("no_net", R.id.tv_no_data_tips_center, "噢哦，没网",
+                R.id.iv_no_data_center, R.mipmap.ic_launcher);
     }
 
     @Override

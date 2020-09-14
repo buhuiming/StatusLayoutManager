@@ -1,11 +1,13 @@
 package com.bhm.sdk.manager.library;
 
 import android.app.Activity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -94,48 +96,52 @@ public class StatusLayoutManager {
 		}
 	}
 
-	/**
-	 *  show position view
-	 *  @deprecated Use {@link #showViewByTag(Object)} instead.
+	/**支持修改布局中的一个指定的TextView文字和指定的ImageView图片
+	 * @param tag
+	 * @param textViewId
+	 * @param tips
+	 * @param imageViewId
+	 * @param resourceId
 	 */
-	@Deprecated
-	public synchronized void showViewByPosition(int position) {
-		if(contentView.getVisibility() == View.VISIBLE) {
-			contentView.setVisibility(View.GONE);
-		}
-		ArrayList<View> arr = new ArrayList<>();
-		for (Object o : views.entrySet()) {
-			Map.Entry entry = (Map.Entry) o;
-			View view = (View) entry.getKey();
-			arr.add(view);
-		}
-		for (int i = 0; i < arr.size(); i++){
-			if(position == i){
-				if(arr.get(i).getVisibility() == View.GONE) {
-					arr.get(i).setVisibility(View.VISIBLE);
-				}
-			}else {
-				if(arr.get(i).getVisibility() == View.VISIBLE) {
-					arr.get(i).setVisibility(View.GONE);
-				}
-			}
-		}
-	}
-
-	public synchronized void showViewByTag(Object tag){
+	public synchronized void showViewByTag(Object tag, int textViewId, String tips, int imageViewId, int resourceId){
 		for (Object o : views.entrySet()) {
 			Map.Entry entry = (Map.Entry) o;
 			View view = (View) entry.getKey();
 			Object o1 = entry.getValue();
 			if(o1 == tag || tag.equals(o1)) {
+				if(textViewId > 0 && !TextUtils.isEmpty(tips)){
+					View textView = view.findViewById(textViewId);
+					if(textView instanceof TextView){
+						((TextView) textView).setText(tips);
+					}
+				}
+				if(imageViewId > 0 && resourceId > 0){
+					View imageView = view.findViewById(imageViewId);
+					if(imageView instanceof ImageView){
+						((ImageView) imageView).setImageResource(resourceId);
+					}
+				}
 				if(view.getVisibility() == View.GONE) {
 					view.setVisibility(View.VISIBLE);
 				}
 				if(contentView.getVisibility() == View.VISIBLE) {
 					contentView.setVisibility(View.GONE);
 				}
+				break;
 			}
 		}
+	}
+
+	public synchronized void showViewByTag(Object tag){
+		showViewByTag(tag, 0, null, 0, 0);
+	}
+
+	public synchronized void showViewByTag(Object tag, int textViewId, String tips){
+		showViewByTag(tag, textViewId, tips, 0, 0);
+	}
+
+	public synchronized void showViewByTag(Object tag, int imageViewId, int resourceId){
+		showViewByTag(tag, 0, null, imageViewId, resourceId);
 	}
 
 	public static final class Builder {
