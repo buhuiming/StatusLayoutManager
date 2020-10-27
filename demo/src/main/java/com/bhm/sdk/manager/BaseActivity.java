@@ -42,10 +42,10 @@ public abstract class BaseActivity extends AppCompatActivity implements OnViewCl
         }
     }
 
-    private LinkedHashMap<Integer, Object> getItemViewsId(){
-        LinkedHashMap<Integer, Object> res = new LinkedHashMap<>();
-        res.put(R.layout.layout_no_data, "no_data");//参数1：layout的id；参数2：Tag，标识
-        res.put(R.layout.layout_no_net, "no_net");
+    private LinkedHashMap<Object, Integer> getItemViewsId(){
+        LinkedHashMap<Object, Integer> res = new LinkedHashMap<>();
+        res.put("no_data", R.layout.layout_no_data);//参数1：layout的id；参数2：Tag，标识
+        res.put("no_net", R.layout.layout_no_net);
         return res;
     }
 

@@ -19,7 +19,7 @@ public class StatusLayoutManager {
 
 	private final OnViewClickListener listener;
 	private final View contentView;
-	private final LinkedHashMap<View, Object> views = new LinkedHashMap<>();
+	private final LinkedHashMap<Object, View> views = new LinkedHashMap<>();
 
 	private StatusLayoutManager(Builder builder) {
 		this.listener = builder.listener;
@@ -30,13 +30,13 @@ public class StatusLayoutManager {
 
 		for (Object o : builder.viewsId.entrySet()) {
 			Map.Entry entry = (Map.Entry) o;
-			int key = (int) entry.getKey();
-			Object val = entry.getValue();
-			View itemView = LayoutInflater.from(builder.activity).inflate(key, null);
+			Object key = entry.getKey();
+			int value = (int) entry.getValue();
+			View itemView = LayoutInflater.from(builder.activity).inflate(value, null);
 			getAllChildViews(itemView);
 			viewGroup.addView(itemView, params);
 			itemView.setVisibility(View.GONE);
-			views.put(itemView, val);
+			views.put(key, itemView);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class StatusLayoutManager {
 			contentView.setVisibility(View.VISIBLE);
 			for (Object o : views.entrySet()) {
 				Map.Entry entry = (Map.Entry) o;
-				View view = (View) entry.getKey();
+				View view = (View) entry.getValue();
 				if(view.getVisibility() == View.VISIBLE) {
 					view.setVisibility(View.GONE);
 				}
@@ -89,7 +89,7 @@ public class StatusLayoutManager {
 		}
 		for (Object o : views.entrySet()) {
 			Map.Entry entry = (Map.Entry) o;
-			View view = (View) entry.getKey();
+			View view = (View) entry.getValue();
 			if(view.getVisibility() == View.VISIBLE) {
 				view.setVisibility(View.GONE);
 			}
@@ -106,9 +106,9 @@ public class StatusLayoutManager {
 	public synchronized void showViewByTag(Object tag, int textViewId, String tips, int imageViewId, int resourceId){
 		for (Object o : views.entrySet()) {
 			Map.Entry entry = (Map.Entry) o;
-			View view = (View) entry.getKey();
-			Object o1 = entry.getValue();
-			if(o1 == tag || tag.equals(o1)) {
+			View view = (View) entry.getValue();
+			Object key = entry.getKey();
+			if(key == tag || tag.equals(key)) {
 				if(textViewId > 0 && !TextUtils.isEmpty(tips)){
 					View textView = view.findViewById(textViewId);
 					if(textView instanceof TextView){
@@ -144,13 +144,17 @@ public class StatusLayoutManager {
 		showViewByTag(tag, 0, null, imageViewId, resourceId);
 	}
 
+	public View getViewByTag(Object tag){
+		return views.get(tag);
+	}
+
 	public static final class Builder {
 
 		private Activity activity;
 		private int contentViewId;
 		private int containerViewId;
 		private View rootView;
-		private LinkedHashMap<Integer, Object> viewsId;
+		private LinkedHashMap<Object, Integer> viewsId;
 		private OnViewClickListener listener;
 
 		Builder(Activity activity) {
@@ -173,7 +177,7 @@ public class StatusLayoutManager {
 			return this;
 		}
 
-		public Builder itemViewsId(LinkedHashMap<Integer, Object> viewsId) {
+		public Builder itemViewsId(LinkedHashMap<Object, Integer> viewsId) {
 			this.viewsId = viewsId;
 			return this;
 		}

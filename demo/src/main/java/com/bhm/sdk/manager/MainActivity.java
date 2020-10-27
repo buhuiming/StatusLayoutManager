@@ -3,6 +3,8 @@ package com.bhm.sdk.manager;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 public class MainActivity extends BaseActivity {
 
     private final static int no_data = 0;
@@ -32,6 +34,7 @@ public class MainActivity extends BaseActivity {
 //        layoutManager.showViewByTag("no_net");
         layoutManager.showViewByTag("no_net", R.id.tv_no_data_tips_center, "噢哦，没网",
                 R.id.iv_no_data_center, R.mipmap.ic_launcher);
+        layoutManager.getViewByTag("no_net").setBackgroundColor(ContextCompat.getColor(this, R.color.color_6));
     }
 
     @Override
