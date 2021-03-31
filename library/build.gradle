@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
 
@@ -38,4 +37,3 @@ ext {
     PUBLISH_ARTIFACT_ID = 'StatusLayoutManager'
     PUBLISH_VERSION = '1.2.1'
 }
-apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
