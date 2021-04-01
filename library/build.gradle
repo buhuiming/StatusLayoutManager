@@ -32,8 +32,3 @@ android {
 dependencies {
 
 }
-ext {
-    PUBLISH_GROUP_ID = 'com.bhm.sdk.manager.library'
-    PUBLISH_ARTIFACT_ID = 'StatusLayoutManager'
-    PUBLISH_VERSION = '1.2.1'
-}
