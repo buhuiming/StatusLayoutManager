@@ -12,6 +12,8 @@ This is StatusLayoutManager Project!
 
 #### v1.1.0为androidx版本，如果不用androidx就使用v1.0.5，但是后续有更新将只支持androidx的版本
 
+### 此项目不再维护，Jcenter仓库停用，有需要的朋友请下载源码，或者使用implementation 'com.github.buhuiming:BHMAndroid:1.5.0'
+
 ## 1.引用
 
     <dependency>
